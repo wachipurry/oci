@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pelicula {{pelicula.nombre}}{% endblock %}
+{% block body %}
+    <h4>Titulo:</h4><p>{{pelicula.nombre}}</p>
+    <h4>Género:</h4> <p>{{pelicula.genero}}</p>
+    <h4>Descripción:</h4><p>{{pelicula.descripcion}}</p>
+    <a class="btn btn-primary"href="/oci">Comprar entrada</a>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Oci{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Oci</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/oci">Inici</a>
+                {% if registrado == true  %}
+                    <a class="nav-item nav-link" href="/logout">Tancar sessio</a>
+                {% else %}
+                    <a class="nav-item nav-link" href="/login">Iniciar sessio</a>
+                    <a class="nav-item nav-link" href="/register">Registrar-se</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+        {% if registrado == false  %}
+            <div>
+                <form method="POST" action="/oci">
+                    <label>Ubicación</label>
+                    <br>
+                    <input type="text" name="ubicacion"></input> 
+                    <br>
+                    <label>Preferencias de ocio:</label>
+                    <br>
+                    <input type="checkbox" name="peliculas">Peliculas</input>
+                    <input type="checkbox" name="teatro">Teatro</input>
+                    <input type="checkbox" name="opera">Opera</input>
+                    <input type="checkbox" name="excursiones">Excursiones</input>
+                    <br>
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+
+                </form>
+            </div>
+            {% if actividades%}
+                <h1>Peliculas</h1>
+            {% endif %}
+            {% for actividad in actividades %}
+                <li>{{ actividad.nombre }}</li>
+            {% endfor %}
+        {% else %}
+            <h1>Peliculas</h1>
+            <ul>
+                {% for actividad in actividades %}
+                    <li><a href="/oci/{{actividad.id}}">{{ actividad.nombre }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+{% endblock %}
