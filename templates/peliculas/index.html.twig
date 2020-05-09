@@ -2,8 +2,12 @@
 
 {% block title %}Pelicula {{pelicula.nombre}}{% endblock %}
 {% block body %}
-    <h4>Titulo:</h4><p>{{pelicula.nombre}}</p>
-    <h4>Género:</h4> <p>{{pelicula.genero}}</p>
-    <h4>Descripción:</h4><p>{{pelicula.descripcion}}</p>
-    <a class="btn btn-primary"href="/oci">Comprar entrada</a>
+<form method="POST" action="/oci/api">
+    <input style="display:none" name="id" type="hidde" value="{{pelicula.id}}"/>
+    <label>Titulo:</label><input name="nombre" type="text" value="{{pelicula.nombre}}"/>
+    <label>Género:</label> <input name="genero" type="text" value="{{pelicula.genero}}" />
+    <label>Descripción:</label><input name="descripcion" type="text" value="{{pelicula.descripcion}}"/>
+    <button class="btn btn-primary" name="update" type="submit">Actualiza</button>
+    <button class="btn btn-danger" name="delete" type="submit">Borra</button>
+</form>
 {% endblock %}

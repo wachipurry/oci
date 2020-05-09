@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Añadir Pelicula{% endblock %}
+{% block body %}
+<form method="POST" action="/oci/api">
+    <label>Titulo:</label><input name="nombre" type="text" />
+    <label>Género:</label> <input name="genero" type="text"/>
+    <label>Descripción:</label><input name="descripcion" type="text"/>
+    <button name="add" type="submit">Inserta</button>
+</form>
+{% endblock %}
